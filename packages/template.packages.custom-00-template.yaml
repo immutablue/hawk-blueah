@@ -12,6 +12,8 @@ immutablue:
 distrobox:
 - name:
   image: 
+  root: false
+  additional_flags:
   pkg_inst_cmd:
   pkg_updt_cmd:
   extra_commands:

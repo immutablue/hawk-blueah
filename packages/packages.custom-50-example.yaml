@@ -58,82 +58,90 @@ immutablue:
 
 
 distrobox:
-  # Give it a name, you can later enter this with
-  # `distrobox enter <name>`
-  - name: my-dbox
-    # Which image should it be based off of? 
-    # See supported images with:
-    #   `distrobox create --compatibility``
-    image: registry.fedoraproject.org/fedora:40
-    # What are the commands used to install and 
-    # update packages in a way that requires 
-    # no user input? 
-    # - dnf install -y 
-    # - apt-get install -y 
-    # - pacman -S --noconfirm
-    # are all examples
-    pkg_inst_cmd: dnf install -y
-    pkg_updt_cmd: dnf update -y
-    # Run any extra commands you want here...
-    # - Uninstalling stuff 
-    # - Adding in new repos 
-    # - etc...
-    extra_commands: |
-      echo "Hi there!" && \
-      cat /run/.containerenv
-    # What are the packages you want to install?
-    packages:
-    - htop 
-    - neofetch
-    - nautilus
-    # Pakages to be install with npm 
-    # (installed with -g option in the container)
-    npm_packages:
-    # - <some_npm_package>
-    #
-    # Pakages to be install with pip
-    # (installed globally in the container)
-    pip_packages:
-    # - <some_pip_package>
-    
-    # Binaries to be exposed to the host system
-    bin_export: 
-    - htop 
-    - nautilus
-    
-    # Apps to be exposed to the host system
-    app_export: 
-    - nautilus
+# Give it a name, you can later enter this with
+# `distrobox enter <name>`
+- name: my-dbox
+  # Which image should it be based off of? 
+  # See supported images with:
+  #   `distrobox create --compatibility``
+  image: registry.fedoraproject.org/fedora:40
+  # Does this need to be ran as a root image?
+  # Equal to `distrobox create --root`
+  # Should be `true` or `false`
+  root: false
+  # Additional flags to pass to podman. You might
+  # need --privileged for example for VPN software
+  additional_flags:
+  # - --privileged
+  # What are the commands used to install and 
+  # update packages in a way that requires 
+  # no user input? 
+  # - dnf install -y 
+  # - apt-get install -y 
+  # - pacman -S --noconfirm
+  # are all examples
+  pkg_inst_cmd: dnf install -y
+  pkg_updt_cmd: dnf update -y
+  # Run any extra commands you want here...
+  # - Uninstalling stuff 
+  # - Adding in new repos 
+  # - etc...
+  extra_commands: |
+    echo "Hi there!" && \
+    cat /run/.containerenv
+  # What are the packages you want to install?
+  packages:
+  - htop 
+  - neofetch
+  - nautilus
+  # Pakages to be install with npm 
+  # (installed with -g option in the container)
+  npm_packages:
+  # - <some_npm_package>
+  #
+  # Pakages to be install with pip
+  # (installed globally in the container)
+  pip_packages:
+  # - <some_pip_package>
+  
+  # Binaries to be exposed to the host system
+  bin_export: 
+  - htop 
+  - nautilus
+  
+  # Apps to be exposed to the host system
+  app_export: 
+  - nautilus
 
-    # Binaries to be symlinked "into" the container 
-    # from the underlying host. Great for container 
-    # runtime things, tools already on the host, 
-    # things requiring ptrace, etc.
-    bin_symlink:
-    - podman 
+  # Binaries to be symlinked "into" the container 
+  # from the underlying host. Great for container 
+  # runtime things, tools already on the host, 
+  # things requiring ptrace, etc.
+  bin_symlink:
+  - podman 
 
-  # Extend onto an upstream distrobox
-  # This is already provided out-of-the-box
-  # by Immutablue
-  - name: util
-    # Leave image as empty if its changing 
-    # how an existing container created in 
-    # an upstream image
-    image:
-    # Still need to have the pkg commands
-    pkg_inst_cmd: dnf install -y
-    pkg_updt_cmd: dnf update -y
-    # Do whatever you want in extra commands
-    extra_commands:
-    # Add extra packages on top of
-    packages:
-      - gcc-gfortran
+# Extend onto an upstream distrobox
+# This is already provided out-of-the-box
+# by Immutablue
+- name: util
+  # Leave image as empty if its changing 
+  # how an existing container created in 
+  # an upstream image
+  image:
+  # Still need to have the pkg commands
+  pkg_inst_cmd: dnf install -y
+  pkg_updt_cmd: dnf update -y
+  # Do whatever you want in extra commands
+  extra_commands:
+  # Add extra packages on top of
+  packages:
+    - gcc-gfortran
 
-    # Just tweak the stuff below if you want 
-    # to add to anything
-    npm_packages:
-    pip_packages: 
-    bin_export: 
-    app_export: 
-    bin_symlink:
-        
+  # Just tweak the stuff below if you want 
+  # to add to anything
+  npm_packages:
+  pip_packages: 
+  bin_export: 
+  app_export: 
+  bin_symlink:
+      
