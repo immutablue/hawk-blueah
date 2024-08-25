@@ -11,6 +11,7 @@ A forkable repo that you can use to create a custom build of [Immutablue](https:
 - Have a look at `packages/packages.custom-50-example.yaml` and `packages/template.packages.custom-00-template.yaml`. Copy the latter to a new file, or make tweaks to the formal.
     - The syntax overall should be straight forward, there are comments that are should describe things and what they do.
     - If there are questions open an issue.
+- Add anything you want into `post_install.sh` for your customization. Such as pulling in your dotfiles for your user, cloning repos, etc.
 - Run `make build` and follow rebasing below
 
 
