@@ -15,7 +15,7 @@ COPY . .
 # Handle .immutablue.repo_urls[]
 RUN set -x && \
     yamls=$(for yaml in ./packages/packages.custom-*.yaml; do printf "%s " $yaml; done) && \
-    for yaml in $yamls; do repos=$(yq '.immutablue.repo_urls[].name' < $yaml); for repo in $repos; do curl -Lo "/etc/yum.repos.d/$repo" $(yq ".immutablue.repo_urls[] | select(.name == \"$repo\").url" < ${INSTALL_DIR}/packages.yaml); done; done && \
+    for yaml in $yamls; do repos=$(yq '.immutablue.repo_urls[].name' < $yaml); for repo in $repos; do curl -Lo "/etc/yum.repos.d/$repo" $(yq ".immutablue.repo_urls[] | select(.name == \"$repo\").url" < $yaml); done; done && \
     ostree container commit
 
 
