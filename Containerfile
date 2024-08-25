@@ -2,12 +2,12 @@
 ARG FEDORA_VERSION=40
 FROM registry.gitlab.com/immutablue/immutablue:${FEDORA_VERSION}
 ARG FEDORA_VERSION=40
-ARG INSTALL_DIR=/opt/immutablue/
+ARG INSTALL_DIR=/etc/immutablue/
 ARG NAME=change-me
 
 COPY ./packages/packages.custom-*.yaml ${INSTALL_DIR}
 
-WORKDIR /opt/immutablue-build-${NAME}
+WORKDIR /etc/immutablue-build-${NAME}
 COPY . .
 
 
