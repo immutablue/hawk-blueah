@@ -1,13 +1,13 @@
 # To be filled out
 
-REGISTRY := 
+REGISTRY :=
 ifndef $(REGISTRY)
 	# Example: registry.gitlab.com/<your-name>
 	# Example: quay.io/<your-name>
-	REGISTRY := change-me
+	REGISTRY := registry.gitlab.com/immutablue/
 endif
 # Example: <your-project-name>'
-IMAGE_BASE_TAG := change-me
+IMAGE_BASE_TAG := hawk-blueah
 
 # Is this an nvidia build? Its best to just 
 # pass this as an arg to `make` instead of setting here:
