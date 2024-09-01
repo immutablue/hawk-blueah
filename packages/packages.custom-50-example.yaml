@@ -145,3 +145,14 @@ distrobox:
   app_export: 
   bin_symlink:
       
+
+# Brew packages to install or uninstall
+brew:
+  # Packages to install
+  install:
+
+  # Packages to uninstall from upstream images
+  uninstall:
+
+
+
