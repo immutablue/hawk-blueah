@@ -4,7 +4,7 @@ REGISTRY :=
 ifndef $(REGISTRY)
 	# Example: registry.gitlab.com/<your-name>
 	# Example: quay.io/<your-name>
-	REGISTRY := registry.gitlab.com/immutablue/
+	REGISTRY := registry.gitlab.com/immutablue
 endif
 # Example: <your-project-name>'
 IMAGE_BASE_TAG := hawk-blueah
