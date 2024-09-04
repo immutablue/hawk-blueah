@@ -103,6 +103,10 @@ distrobox:
   # (installed globally in the container)
   pip_packages:
   # - <some_pip_package>
+  #
+  # Packages to install with cargo
+  cargo_packages:
+  # - <some_cargo_package>
   
   # Binaries to be exposed to the host system
   bin_export: 
@@ -141,6 +145,7 @@ distrobox:
   # to add to anything
   npm_packages:
   pip_packages: 
+  cargo_packages:
   bin_export: 
   app_export: 
   bin_symlink:
