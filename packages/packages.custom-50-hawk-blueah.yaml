@@ -33,6 +33,7 @@ immutablue:
   # Urls to RPMs to download (they are curled)
   # so provide the url
   rpm_url:
+    - https://anytype-release.fra1.cdn.digitaloceanspaces.com/anytype-0.42.5.x86_64.rpm
 
   # RPM packages you want to remove from the image
   rpm_rm:
@@ -56,8 +57,21 @@ immutablue:
   # Flatpaks to be installed
   # Check https://flathub.org
   flatpaks:
-  # - com.discordapp.Discord 
-  # - us.zoom.Zoom
+    - com.bitwarden.desktop
+    - com.calibre_ebook.calibre
+    - com.redis.RedisInsight
+    - com.usebottles.bottles
+    - com.yubico.yubioath
+    - org.onlyoffice.desktopeditors
+    - org.signal.Signal
+    - re.rizin.cutter
+    - org.wireshark.Wireshark
+    - org.kiwix.desktop
+    - org.jamovi.jamovi
+    - io.github.peazip.PeaZip
+    - com.github.tchx84.Flatseal
+    - org.gnome.World.PikaBackup
+
 
 
   #Flatpaks to be uninstalled 
