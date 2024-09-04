@@ -16,13 +16,6 @@ ifndef $(NVIDIA)
 	NVIDIA := 0
 endif
 
-# Is this an nvidia build? Its best to just 
-# pass this as an arg to `make` instead of setting here:
-# - Ex: make NVIDIA=1 all 
-ifndef $(NVIDIA)
-	NVIDIA := 0
-endif
-
 # This forms something similar to:
 # registry.gitlab.com/<your-name>/<your-project>
 # and represents where the image will be pushed to
