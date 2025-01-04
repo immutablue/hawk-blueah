@@ -4,11 +4,12 @@ REGISTRY :=
 ifndef $(REGISTRY)
 	# Example: registry.gitlab.com/<your-name>
 	# Example: quay.io/<your-name>
-	REGISTRY := registry.gitlab.com/immutablue
+	REGISTRY := quay.io/immutablue
 endif
 # Example: <your-project-name>'
 IMAGE_BASE_TAG := hawk-blueah
-
+IMAGE := $(REGISTRY)/$(IMAGE_BASE_TAG)
+ALT_IMAGE := none
 
 # This forms something similar to:
 # registry.gitlab.com/<your-name>/<your-project>
@@ -49,6 +50,11 @@ else ifeq ($(KUBERBLUE_NUCLEUS),1)
 	VERSION := $(VERSION)-nucleus
 else 
 	IMMUTABLUE_BASE := immutablue
+endif
+
+ifeq ($(LTS),1)
+	TAG := $(TAG)-lts
+	VERSION := $(VERSION)-lts
 endif
 
 # If you want to set this as latest as well
@@ -102,21 +108,24 @@ endif
 		
 
 # No need to change
-IMAGE_COMPRESSION_FORMAT := zstd:chunked
-IMAGE_COMPRESSION_LEVEL := 12
 push:
 ifeq ($(SET_AS_LATEST), 1)
 	buildah \
 		push \
-		--compression-format $(IMAGE_COMPRESSION_FORMAT) \
-		--compression-level $(IMAGE_COMPRESSION_LEVEL) \
 		$(IMAGE):latest
 endif
 	buildah \
 		push \
-		--compression-format $(IMAGE_COMPRESSION_FORMAT) \
-		--compression-level $(IMAGE_COMPRESSION_LEVEL) \
 		$(IMAGE):$(TAG)
+ifneq ($(ALT_IMAGE), none)
+	buildah \
+		tag \
+		$(IMAGE):$(TAG) \
+		$(ALT_IMAGE):$(TAG)
+	buildah \
+		push \
+		$(ALT_IMAGE):$(TAG)
+endif
 
 
 retag:
