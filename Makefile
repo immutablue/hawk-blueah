@@ -94,6 +94,7 @@ ifeq ($(SET_AS_LATEST), 1)
 		-t $(IMAGE):$(TAG) \
 		-f ./Containerfile \
 		--build-arg=IMMUTABLUE_BASE=$(IMMUTABLUE_BASE) \
+		--build-arg=IMAGE_TAG=$(IMAGE_BASE_TAG):$(TAG) \
 		--build-arg=FEDORA_VERSION=$(VERSION)
 else
 	buildah \
@@ -103,6 +104,7 @@ else
 		-t $(IMAGE):$(TAG) \
 		-f ./Containerfile \
 		--build-arg=IMMUTABLUE_BASE=$(IMMUTABLUE_BASE) \
+		--build-arg=IMAGE_TAG=$(IMAGE_BASE_TAG):$(TAG) \
 		--build-arg=FEDORA_VERSION=$(VERSION)
 endif
 		
