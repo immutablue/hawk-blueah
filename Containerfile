@@ -6,15 +6,17 @@
 # you can use the --mount option to RUN below
 # to mount that container and add the logic 
 # to copy in build/10-copy.sh
-ARG FEDORA_VERSION=41
+ARG FEDORA_VERSION=42
 ARG IMMUTABLUE_BASE=immutablue
 ARG IMAGE_REGISTRY=quay.io/immutablue
+ARG BASE_IMAGE=quay.io/immutablue/immutablue:${FEDORA_VERSION}
 
 
-FROM ${IMAGE_REGISTRY}/${IMMUTABLUE_BASE}:${FEDORA_VERSION}
+# FROM ${IMAGE_REGISTRY}/${IMMUTABLUE_BASE}:${FEDORA_VERSION}
+FROM ${BASE_IMAGE}
 
 
-ARG FEDORA_VERSION=41
+ARG FEDORA_VERSION=42
 ARG INSTALL_DIR=/usr/immutablue
 ARG NAME=change-me
 ARG CUSTOM_INSTALL_DIR=${INSTALL_DIR}-build-${NAME}

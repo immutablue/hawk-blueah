@@ -33,6 +33,14 @@ immutablue:
   - gnome-shell-extension-user-theme
   - tlp # battery
 
+  # these can be set for speicific builds too (see /usr/immutablue/build_options)
+  rpm_silverblue:
+  - neovim
+
+  # these can be set for speicific builds too (see /usr/immutablue/build_options)
+  rpm_gui:
+  - neovim-qt
+
   # You can specify RPMs for specific archs only
   rpm_aarch64:
   rpm_x86_64:
@@ -112,6 +120,10 @@ immutablue:
   # Services 
   # enable
   services_enable_sys:
+
+  # xrdp requires a gui, so only do it for gui builds
+  # (not-nucleus)
+  services_enable_sys_gui:
   - xrdp.service
   # disable services
   services_disable_sys:
