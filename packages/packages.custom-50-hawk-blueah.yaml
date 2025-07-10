@@ -303,7 +303,124 @@ distrobox:
   bin_export: 
   app_export: 
   bin_symlink:
-      
+
+# Development distrobox for programming and development work
+- name: dev
+  image: registry.fedoraproject.org/fedora:42
+  root: false
+  additional_flags:
+  pkg_inst_cmd: dnf install -y
+  pkg_updt_cmd: dnf update -y
+  extra_commands: |
+    # Add RPMFusion repositories
+    dnf install -y https://mirrors.rpmfusion.org/free/fedora/rpmfusion-free-release-$(rpm -E %fedora).noarch.rpm https://mirrors.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-release-$(rpm -E %fedora).noarch.rpm
+  packages:
+    # Development tools
+    - gdb
+    - clang
+    - ShellCheck
+    - gcc
+    - gcc-c++
+    - make
+    - cmake
+    - automake
+    - autoconf
+    - libtool
+    # Development libraries
+    - gtk4-devel
+    - nautilus-devel
+    - json-glib-devel
+    - libadwaita-devel
+    - glib2-devel
+    # Fonts
+    - fira-code-fonts
+    # Debugging and tracing tools
+    - bpftool
+    - libbpf
+    - libbpf-devel
+    - bcc-tools
+    - strace
+    - ltrace
+    # Multimedia
+    - mpv-devel
+    - libsixel
+    - ImageMagick
+    - ImageMagick-devel
+    # Other useful tools
+    - pandoc
+    - jq
+    - yq
+    - ripgrep
+    - fd-find
+    - bat
+    - exa
+    - neovim
+    - tmux
+    - git
+    - gh
+    - nodejs
+    - npm
+    - python3-pip
+    - cargo
+    - rustc
+  npm_packages:
+    - claude-ai-code
+    - bash-language-server
+    - dockerfile-language-server-nodejs
+    - pyright
+    - intelephense
+  pip_packages:
+    - tree-sitter
+    - autotools-language-server
+    - feedparser
+    - psycopg
+    - python-lsp-server
+    - black
+    - ruff
+    - mypy
+    - pytest
+    - ipython
+    - jupyter
+    - pandas
+    - numpy
+    - matplotlib
+  cargo_packages:
+    - youtube-tui
+    - wthrr
+    - sendme
+    - bacon
+    - cargo-edit
+    - cargo-watch
+    - rust-analyzer
+  bin_export:
+    - bash-language-server
+    - dockerfile-language-server-nodejs 
+    - pyright
+    - intelephense
+    - autotools-language-server
+    - python-lsp-server
+    - rust-analyzer
+    - shellcheck
+    - pandoc
+    - youtube-tui
+    - wthrr
+    - sendme
+    - bacon
+    - cargo-edit
+    - cargo-watch
+    - black
+    - ruff
+    - mypy
+    - pytest
+    - ipython
+    - jupyter
+  app_export:
+  bin_symlink:
+    - podman
+    - buildah
+    - strace
+    - ltrace
+    - distrobox
 
 # Brew packages to install or uninstall. 
 # Brew only works on x86_64.
