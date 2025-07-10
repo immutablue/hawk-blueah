@@ -54,7 +54,7 @@ immutablue:
 
   # these can be set for speicific builds too (see /usr/immutablue/build_options)
   rpm_gui:
-  - arandar
+  - arandr
   - brightnessctl
   - feh
   - gnome-session-xsession
