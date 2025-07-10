@@ -20,18 +20,33 @@ immutablue:
   # RPM packages you want to install
   # Same name as anything you'd normally install with `dnf install <name>`
   rpm:
+  - arm-image-installer
+  - binutils
+  - borgbackup
+  - bpftrace
+  - cabal-install
+  - cockpit 
+  - cockpit-machines
+  - cockpit-ostree
+  - cockpit-podman 
+  - gcc
+  - gcc-plugin-devel
+  - gdb
+  - gnutls
+  - gnutls-utils
+  - ImageMagick
+  - ImageMagick-devel
+  - ltrace
   - lxc
   - lxc-templates
-  - gdb
+  - perl-JSON
+  - perl-Mojolicious 
+  - perl-YAML
+  - rclone
+  - stack
   - strace
-  - ltrace
-  - bpftrace
-  - arm-image-installer
-  - gnome-shell-extension-appindicator
-  - gnome-shell-extension-dash-to-dock
-  - gnome-shell-extension-gsconnect
-  - gnome-shell-extension-user-theme
-  - tlp # battery
+  - tlp
+  - wireguard-tools
 
   # these can be set for speicific builds too (see /usr/immutablue/build_options)
   rpm_silverblue:
@@ -39,7 +54,39 @@ immutablue:
 
   # these can be set for speicific builds too (see /usr/immutablue/build_options)
   rpm_gui:
-  - neovim-qt
+  - arandar
+  - brightnessctl
+  - feh
+  - gnome-session-xsession
+  - gnome-shell-extension-appindicator
+  - gnome-shell-extension-blur-my-shell
+  - gnome-shell-extension-dash-to-dock
+  - gnome-shell-extension-gsconnect
+  - gnome-shell-extension-search-light 
+  - gnome-shell-extension-tailscale-gnome-qs
+  - gnome-shell-extension-user-theme
+  - gtk2-devel
+  - i3lock
+  - kitty
+  - libX11-devel 
+  - libXft-devel 
+  - libXinerama-devel
+  - libXrandr-devel
+  - libXScrnSaver-devel
+  - mupdf
+  - picom
+  - qtile-wayland
+  - rofi
+  - wmctrl
+  - xclip
+  - xdotool
+  - xmobar
+  - xmonad
+  - xorg-x11-server-Xephyr 
+  - xorg-x11-xdm
+  - xwininfo
+  - zathura
+  - zathura-pdf-poppler
 
   # You can specify RPMs for specific archs only
   rpm_aarch64:
@@ -263,28 +310,35 @@ distrobox:
 brew:
   # Packages to install
   install:
+  - aerc
   - bat
   - bear
+  - binsider
   - btop
+  - croc
   - clipboard
   - ddgr
   - entr
   - eza
   - ffmpegthumbnailer
+  - freerdp
   - fex
   - glab
   - helm
+  - hexyl
+  - homeassistant-cli
   - just
   - kn
   - krew
   - kubernetes-cli
   - lazygit
-  - mpd
   - onefetch
   - poetry
   - pyright
   - shellcheck
+  - stow
   - sshs
+  - wiki
   - yazi
   - yt-dlp
 
