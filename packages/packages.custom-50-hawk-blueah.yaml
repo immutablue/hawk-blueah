@@ -252,7 +252,7 @@ distrobox:
     - cargo
     - rustc
   npm_packages:
-    - '@anthropic/claude-code'
+    - '@anthropic-ai/claude-code'
     - bash-language-server
     - dockerfile-language-server-nodejs
     - pyright
