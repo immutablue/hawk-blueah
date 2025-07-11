@@ -150,6 +150,7 @@ immutablue:
     - io.github.peazip.PeaZip
     - com.github.tchx84.Flatseal
     - org.gnome.World.PikaBackup
+    - net.waterfox.waterfox
 
 
   # Architecture specific
