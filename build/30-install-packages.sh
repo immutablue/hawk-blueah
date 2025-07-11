@@ -32,3 +32,29 @@ then
     pip3 install --prefix=/usr $(for pkg in $pip_pkgs; do printf '%s ' $pkg; done)
 fi
 
+
+#   ____ _   _ ____ _____ ___  __  __ 
+#  / ___| | | / ___|_   _/ _ \|  \/  |
+# | |   | | | \___ \ | || | | | |\/| |
+# | |___| |_| |___) || || |_| | |  | |
+#  \____|\___/|____/ |_| \___/|_|  |_|
+#                                     
+
+#      _   
+#  ___| |_ 
+# / __| __|
+# \__ \ |_ 
+# |___/\__|
+         
+            
+build_st() {
+    cd /usr/src/gitlab/st
+    make clean all
+    cp st /usr/bin
+}
+
+
+if [[ "${TRUE}" == $(is_option_in_build_options "gui") ]]
+then
+    build_st
+fi
