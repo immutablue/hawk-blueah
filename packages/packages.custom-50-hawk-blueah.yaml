@@ -316,7 +316,7 @@ distrobox:
     - pyright
     - intelephense
     - autotools-language-server
-    - python-lsp-server
+    - pylsp
     - rust-analyzer
     - shellcheck
     - pandoc
