@@ -194,9 +194,37 @@ immutablue:
 
 
 distrobox:
+- name: util
+  image:
+  pkg_inst_cmd: dnf install -y
+  pkg_updt_cmd: dnf update -y
+  extra_commands:
+  packages:
+  # Both needed for GTK theme stuff
+  - sassc
+  - glib2-devel
+  - gnome-tweaks
+  - xfreerdp
+  - figlet 
+  - cowsay
+  - python3-pip
+  - home-assistant-cli
+  - ImageMagick
+  - ImageMagick-devel
+  package_aarch64:
+  npm_packages:
+  pip_packages: 
+  cargo_packages:
+  bin_export: 
+  - figlet 
+  - cowsay
+  bin_export_aarch64:
+  - hass-cli
+  app_export: 
+  bin_symlink:
 # Development distrobox for programming and development work
 - name: dev
-  image: registry.fedoraproject.org/fedora:42
+  image:
   root: false
   additional_flags:
   pkg_inst_cmd: dnf install -y
