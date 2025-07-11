@@ -151,6 +151,7 @@ immutablue:
     - com.github.tchx84.Flatseal
     - org.gnome.World.PikaBackup
     - net.waterfox.waterfox
+    - net.lutris.Lutris
 
 
   # Architecture specific
