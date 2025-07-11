@@ -282,7 +282,7 @@ distrobox:
     - rust-analyzer
   bin_export:
     - bash-language-server
-    - dockerfile-language-server-nodejs 
+    - docker-langserver
     - pyright
     - intelephense
     - autotools-language-server
