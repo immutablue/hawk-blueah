@@ -1,4 +1,4 @@
-[submodule "st"]
-	path = st
+[submodule "artifacts/overrides/usr/src/gitlab/st"]
+	path = artifacts/overrides/usr/src/gitlab/st
 	url = git@gitlab.com:Creplav/st.git
 	branch = custom-build
