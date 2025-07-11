@@ -1,0 +1,4 @@
+[submodule "st"]
+	path = st
+	url = git@gitlab.com:Creplav/st.git
+	branch = custom-build
