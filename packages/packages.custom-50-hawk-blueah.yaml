@@ -339,6 +339,93 @@ distrobox:
     - strace
     - ltrace
     - distrobox
+# Whisper distrobox for speech-to-text functionality
+- name: whisper
+  image: quay.io/immutablue/dbox-fedora:42
+  pkg_inst_cmd: dnf5 install -y
+  pkg_updt_cmd: dnf5 update -y
+  extra_commands: |
+    #!/bin/bash
+    install_dir="${HOME}/Source/Public/whisper-python"
+    whisper_scripts="${HOME}/.local/bin"
+    
+    # Update and install dependencies
+    sudo dnf5 update -y
+    sudo dnf5 install -y '@development-tools' git python3-pip python3-devel ffmpeg ffmpeg-devel
+    
+    # Create directories if they don't exist
+    mkdir -p "${install_dir}" "${whisper_scripts}"
+    
+    # Install Python-based Whisper with optimizations
+    pip install --user --upgrade pip
+    pip install --user openai-whisper faster-whisper whisperx torch torchaudio
+    
+    # Create a wrapper script for easier usage
+    cat > "${whisper_scripts}/whisper-transcribe" << 'EOF'
+#!/bin/bash
+# Wrapper script for Whisper transcription
+MODEL="${WHISPER_MODEL:-base}"
+LANG="${WHISPER_LANG:-en}"
+
+usage() {
+    echo "Usage: $(basename $0) [OPTIONS] <audio_file>"
+    echo "Options:"
+    echo "  -m MODEL    Whisper model to use (tiny, base, small, medium, large)"
+    echo "  -l LANG     Language code (en, es, fr, etc.)"
+    echo "  -f FORMAT   Output format (txt, srt, vtt, json)"
+    echo "  -h          Show this help"
+}
+
+OUTPUT_FORMAT="txt"
+while getopts "m:l:f:h" opt; do
+    case $opt in
+        m) MODEL="$OPTARG";;
+        l) LANG="$OPTARG";;
+        f) OUTPUT_FORMAT="$OPTARG";;
+        h) usage; exit 0;;
+        *) usage; exit 1;;
+    esac
+done
+shift $((OPTIND-1))
+
+if [ $# -eq 0 ]; then
+    usage
+    exit 1
+fi
+
+whisper "$1" --model "$MODEL" --language "$LANG" --output_format "$OUTPUT_FORMAT"
+EOF
+    
+    chmod +x "${whisper_scripts}/whisper-transcribe"
+    
+    # Download base model if not exists
+    python3 -c "import whisper; whisper.load_model('base')"
+    
+    # Export the wrapper script
+    distrobox-export --bin "${whisper_scripts}/whisper-transcribe"
+    distrobox-export --bin "$(which whisper)"
+  packages:
+    - which
+    - ffmpeg
+    - ffmpeg-devel
+    - python3-pip
+    - python3-devel
+    - portaudio-devel
+    - libsixel
+    - ImageMagick
+    - ImageMagick-devel
+  npm_packages:
+  pip_packages:
+  cargo_packages:
+  bin_export:
+  app_export:
+  bin_symlink:
+    - podman
+    - buildah
+    - distrobox
+    - strace
+    - ltrace
+    - bpftrace
 
 # Brew packages to install or uninstall. 
 # Brew only works on x86_64.
