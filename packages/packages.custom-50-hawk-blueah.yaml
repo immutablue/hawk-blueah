@@ -339,6 +339,11 @@ distrobox:
     - strace
     - ltrace
     - distrobox
+    - stack
+    - cabal
+    - haskell-language-server
+    - registry-python-argcomplete
+    - kubectl
 # Whisper distrobox for speech-to-text functionality
 - name: whisper
   image: quay.io/immutablue/dbox-fedora:42
