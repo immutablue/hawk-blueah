@@ -58,7 +58,6 @@ immutablue:
   - arandr
   - brightnessctl
   - feh
-  - gnome-session-xsession
   - gnome-shell-extension-appindicator
   - gnome-shell-extension-blur-my-shell
   - gnome-shell-extension-dash-to-dock
@@ -69,8 +68,10 @@ immutablue:
   - gtk2-devel
   - i3lock
   - kitty
-  - libX11-devel 
-  - libXft-devel 
+  - fontconfig-devel
+  - freetype-devel
+  - libX11-devel
+  - libXft-devel
   - libXinerama-devel
   - libXrandr-devel
   - libXScrnSaver-devel
@@ -367,40 +368,40 @@ distrobox:
     pip install --user openai-whisper faster-whisper whisperx torch torchaudio
     
     # Create a wrapper script for easier usage
-    cat > "${whisper_scripts}/whisper-transcribe" << 'EOF'
-#!/bin/bash
-# Wrapper script for Whisper transcription
-MODEL="${WHISPER_MODEL:-base}"
-LANG="${WHISPER_LANG:-en}"
+    cat > "${whisper_scripts}/whisper-transcribe" <<EOF
+    #!/bin/bash
+    # Wrapper script for Whisper transcription
+    MODEL="${WHISPER_MODEL:-base}"
+    LANG="${WHISPER_LANG:-en}"
 
-usage() {
-    echo "Usage: $(basename $0) [OPTIONS] <audio_file>"
-    echo "Options:"
-    echo "  -m MODEL    Whisper model to use (tiny, base, small, medium, large)"
-    echo "  -l LANG     Language code (en, es, fr, etc.)"
-    echo "  -f FORMAT   Output format (txt, srt, vtt, json)"
-    echo "  -h          Show this help"
-}
+    usage() {
+        echo "Usage: $(basename $0) [OPTIONS] <audio_file>"
+        echo "Options:"
+        echo "  -m MODEL    Whisper model to use (tiny, base, small, medium, large)"
+        echo "  -l LANG     Language code (en, es, fr, etc.)"
+        echo "  -f FORMAT   Output format (txt, srt, vtt, json)"
+        echo "  -h          Show this help"
+    }
 
-OUTPUT_FORMAT="txt"
-while getopts "m:l:f:h" opt; do
-    case $opt in
-        m) MODEL="$OPTARG";;
-        l) LANG="$OPTARG";;
-        f) OUTPUT_FORMAT="$OPTARG";;
-        h) usage; exit 0;;
-        *) usage; exit 1;;
-    esac
-done
-shift $((OPTIND-1))
+    OUTPUT_FORMAT="txt"
+    while getopts "m:l:f:h" opt; do
+        case $opt in
+            m) MODEL="$OPTARG";;
+            l) LANG="$OPTARG";;
+            f) OUTPUT_FORMAT="$OPTARG";;
+            h) usage; exit 0;;
+            *) usage; exit 1;;
+        esac
+    done
+    shift $((OPTIND-1))
 
-if [ $# -eq 0 ]; then
-    usage
-    exit 1
-fi
+    if [ $# -eq 0 ]; then
+        usage
+        exit 1
+    fi
 
-whisper "$1" --model "$MODEL" --language "$LANG" --output_format "$OUTPUT_FORMAT"
-EOF
+    whisper "$1" --model "$MODEL" --language "$LANG" --output_format "$OUTPUT_FORMAT"
+    EOF
     
     chmod +x "${whisper_scripts}/whisper-transcribe"
     
