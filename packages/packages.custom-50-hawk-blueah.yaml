@@ -68,6 +68,7 @@ immutablue:
   - gtk2-devel
   - i3lock
   - kitty
+  - gnome-session-xsession
   - fontconfig-devel
   - freetype-devel
   - libX11-devel
