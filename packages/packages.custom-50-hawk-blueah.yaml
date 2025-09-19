@@ -47,6 +47,7 @@ immutablue:
   - strace
   - tlp
   - wireguard-tools
+  - s3fs-fuse
 
   # these can be set for speicific builds too (see /usr/immutablue/build_options)
   rpm_silverblue:
