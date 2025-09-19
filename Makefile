@@ -114,6 +114,11 @@ ifeq ($(LTS), 1)
 	TAG := $(TAG)-lts
 endif
 
+ifeq ($(NIX), 1)
+	BASE_IMAGE := $(BASE_IMAGE)-nix
+	TAG := $(TAG)-nix
+endif
+
 
 # -----------------------------------
 
