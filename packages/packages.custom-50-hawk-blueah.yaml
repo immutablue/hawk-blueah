@@ -1,5 +1,5 @@
 # Packages yaml filename should be in the format of
-# packages-custom-<2-numbers>-<description>.yaml 
+# packages-custom-&lt;2-numbers&gt;-&lt;description&gt;.yaml 
 # - Example: packages-custom-10-my-containers.yaml
 # It is **IMPORTANT** to note that these are ran in alphanumeric order.
 # (same order that you would get if you did `ls -l ./packages`)
@@ -11,127 +11,149 @@
 immutablue:
   # Repo URLs to add in the build (they are curled)
   repo_urls:
+    all:
   # - name: tailscale.repo 
   #   url: https://pkgs.tailscale.com/stable/fedora/tailscale.repo
   # We can also set repo_urls per architecture
   repo_urls_aarch64:
+    all:
   repo_urls_x86_64:
+    all:
 
   # RPM packages you want to install
-  # Same name as anything you'd normally install with `dnf install <name>`
+  # Same name as anything you'd normally install with `dnf install &lt;name&gt;`
   rpm:
-  - arm-image-installer
-  - binutils
-  - borgbackup
-  - bpftrace
-  - cabal-install
-  - cockpit 
-  - cockpit-machines
-  - cockpit-ostree
-  - cockpit-podman 
-  - gcc
-  - gcc-plugin-devel
-  - gdb
-  - gnutls
-  - gnutls-utils
-  - ImageMagick
-  - ImageMagick-devel
-  - ltrace
-  - lxc
-  - lxc-templates
-  - perl-JSON
-  - perl-Mojolicious 
-  - perl-YAML
-  - rclone
-  - stack
-  - strace
-  - tlp
-  - wireguard-tools
-  - s3fs-fuse
+    all:
+    - arm-image-installer
+    - binutils
+    - borgbackup
+    - bpftrace
+    - cabal-install
+    - cockpit 
+    - cockpit-machines
+    - cockpit-ostree
+    - cockpit-podman 
+    - gcc
+    - gcc-plugin-devel
+    - gdb
+    - gnutls
+    - gnutls-utils
+    - ImageMagick
+    - ImageMagick-devel
+    - ltrace
+    - lxc
+    - lxc-templates
+    - perl-JSON
+    - perl-Mojolicious 
+    - perl-YAML
+    - rclone
+    - stack
+    - strace
+    - tlp
+    - wireguard-tools
+    - s3fs-fuse
 
   # these can be set for speicific builds too (see /usr/immutablue/build_options)
   rpm_silverblue:
-  - neovim
+    all:
+    - neovim
 
   # these can be set for speicific builds too (see /usr/immutablue/build_options)
   rpm_gui:
-  - arandr
-  - brightnessctl
-  - feh
-  - gnome-shell-extension-appindicator
-  - gnome-shell-extension-blur-my-shell
-  - gnome-shell-extension-dash-to-dock
-  - gnome-shell-extension-gsconnect
-  - gnome-shell-extension-search-light 
-  - gnome-shell-extension-tailscale-gnome-qs
-  - gnome-shell-extension-user-theme
-  - gtk2-devel
-  - i3lock
-  - kitty
-  - gnome-session-xsession
-  - fontconfig-devel
-  - freetype-devel
-  - libX11-devel
-  - libXft-devel
-  - libXinerama-devel
-  - libXrandr-devel
-  - libXScrnSaver-devel
-  - mupdf
-  - picom
-  - qtile-wayland
-  - rofi
-  - wmctrl
-  - xclip
-  - xdotool
-  - xmobar
-  - xmonad
-  - xorg-x11-server-Xephyr 
-  - xorg-x11-xdm
-  - xwininfo
-  - zathura
-  - zathura-pdf-poppler
+    all:
+    - arandr
+    - brightnessctl
+    - feh
+    - gnome-shell-extension-appindicator
+    - gnome-shell-extension-blur-my-shell
+    - gnome-shell-extension-dash-to-dock
+    - gnome-shell-extension-gsconnect
+    - gnome-shell-extension-search-light 
+    - gnome-shell-extension-tailscale-gnome-qs
+    - gnome-shell-extension-user-theme
+    - gtk2-devel
+    - i3lock
+    - kitty
+    - fontconfig-devel
+    - freetype-devel
+    - libX11-devel
+    - libXft-devel
+    - libXinerama-devel
+    - libXrandr-devel
+    - libXScrnSaver-devel
+    - mupdf
+    - picom
+    - qtile-wayland
+    - rofi
+    - wmctrl
+    - xclip
+    - xdotool
+    - xmobar
+    - xmonad
+    - xorg-x11-server-Xephyr 
+    - xorg-x11-xdm
+    - xwininfo
+    - zathura
+    - zathura-pdf-poppler
+    42:
+    - gnome-session-xsession
 
   # You can specify RPMs for specific archs only
   rpm_aarch64:
+    all:
   rpm_x86_64:
+    all:
 
   # Urls to RPMs to download (they are curled)
   # so provide the url
   rpm_url:
+    all:
   rpm_url_aarch64:
+    all:
   rpm_url_x86_64:
+    all:
 
   # RPM packages you want to remove from the image
   rpm_rm:
+    all:
 
   # You can remove 
   rpm_rm_aarch64:
+    all:
   rpm_rm_x86_64:
+    all:
 
   # Build files that need to be removed. If the build is filing about some
   # ephemeral file that exists, put the path here so it get removed in 
   # the later build stages
   file_rm:
-  - /etc/yum.repos.d/tailscale.repo
+    all:
+    - /etc/yum.repos.d/tailscale.repo
   # - /path/to/some/file
   # - /path/to/some/dir
   # Files can be removed per architecture as well
   file_rm_aarch64:
+    all:
   file_rm_x86_64:
+    all:
 
 
   # Repositories for Flatpaks
   flatpak_repos:
+    all:
     - name: flathub
       url: https://dl.flathub.org/repo/flathub.flatpakrepo 
 
   flatpak_repos_aarch64:
+    all:
   flatpak_repos_x86_64:
+    all:
 
   # Runtimes for Flatpaks
   # (Can query with `flatpak list --app --columns=application,runtime`)
   # Really only needed if you plan to build an iso
   flatpaks_runtime:
+    all:
   # - org.gnome.Platform/x86_64/46 
   # - org.freedesktop.Platform/x86_64/23.08 
   
@@ -139,6 +161,7 @@ immutablue:
   # Flatpaks to be installed
   # Check https://flathub.org
   flatpaks:
+    all:
     - com.bitwarden.desktop
     - com.calibre_ebook.calibre
     - com.redis.RedisInsight
@@ -159,41 +182,55 @@ immutablue:
 
   # Architecture specific
   flatpaks_aarch64:
+    all:
   flatpaks_x86_64:
+    all:
 
   #Flatpaks to be uninstalled 
   flatpaks_rm:
+    all:
   # - org.chromium.Chromium
 
   # Remove Architecture specific flatpaks
   flatpaks_rm_aarch64:
+    all:
   flatpaks_rm_x86_64:
+    all:
 
   # Services 
   # enable
   services_enable_sys:
+    all:
 
   # xrdp requires a gui, so only do it for gui builds
   # (not-nucleus)
   services_enable_sys_gui:
-  - xrdp.service
+    all:
+    - xrdp.service
   # disable services
   services_disable_sys:
+    all:
   # mask a service
   services_mask_sys:
+    all:
   # unmask the service
   services_unmask_sys:
+    all:
 
   # User services 
   # Handled in immutablue installer
   # enable
   services_enable_user:
+    all:
   # disable services
   services_disable_user:
+    all:
   # mask a service
   services_mask_user:
+    all:
   # unmask the service
   services_unmask_user:
+    all:
 
 
 distrobox:
@@ -354,42 +391,42 @@ distrobox:
   pkg_updt_cmd: dnf5 update -y
   extra_commands: |
     #!/bin/bash
-    install_dir="${HOME}/Source/Public/whisper-python"
-    whisper_scripts="${HOME}/.local/bin"
+    install_dir=&quot;${HOME}/Source/Public/whisper-python&quot;
+    whisper_scripts=&quot;${HOME}/.local/bin&quot;
     
     # Update and install dependencies
     sudo dnf5 update -y
     sudo dnf5 install -y '@development-tools' git python3-pip python3-devel ffmpeg ffmpeg-devel
     
     # Create directories if they don't exist
-    mkdir -p "${install_dir}" "${whisper_scripts}"
+    mkdir -p &quot;${install_dir}&quot; &quot;${whisper_scripts}&quot;
     
     # Install Python-based Whisper with optimizations
     pip install --user --upgrade pip
     pip install --user openai-whisper faster-whisper whisperx torch torchaudio
     
     # Create a wrapper script for easier usage
-    cat > "${whisper_scripts}/whisper-transcribe" <<EOF
+    cat &gt; &quot;${whisper_scripts}/whisper-transcribe&quot; &lt;&lt;EOF
     #!/bin/bash
     # Wrapper script for Whisper transcription
-    MODEL="${WHISPER_MODEL:-base}"
-    LANG="${WHISPER_LANG:-en}"
+    MODEL=&quot;${WHISPER_MODEL:-base}&quot;
+    LANG=&quot;${WHISPER_LANG:-en}&quot;
 
     usage() {
-        echo "Usage: $(basename $0) [OPTIONS] <audio_file>"
-        echo "Options:"
-        echo "  -m MODEL    Whisper model to use (tiny, base, small, medium, large)"
-        echo "  -l LANG     Language code (en, es, fr, etc.)"
-        echo "  -f FORMAT   Output format (txt, srt, vtt, json)"
-        echo "  -h          Show this help"
+        echo &quot;Usage: $(basename $0) [OPTIONS] &lt;audio_file&gt;&quot;
+        echo &quot;Options:&quot;
+        echo &quot;  -m MODEL    Whisper model to use (tiny, base, small, medium, large)&quot;
+        echo &quot;  -l LANG     Language code (en, es, fr, etc.)&quot;
+        echo &quot;  -f FORMAT   Output format (txt, srt, vtt, json)&quot;
+        echo &quot;  -h          Show this help&quot;
     }
 
-    OUTPUT_FORMAT="txt"
-    while getopts "m:l:f:h" opt; do
+    OUTPUT_FORMAT=&quot;txt&quot;
+    while getopts &quot;m:l:f:h&quot; opt; do
         case $opt in
-            m) MODEL="$OPTARG";;
-            l) LANG="$OPTARG";;
-            f) OUTPUT_FORMAT="$OPTARG";;
+            m) MODEL=&quot;$OPTARG&quot;;;
+            l) LANG=&quot;$OPTARG&quot;;;
+            f) OUTPUT_FORMAT=&quot;$OPTARG&quot;;;
             h) usage; exit 0;;
             *) usage; exit 1;;
         esac
@@ -401,17 +438,17 @@ distrobox:
         exit 1
     fi
 
-    whisper "$1" --model "$MODEL" --language "$LANG" --output_format "$OUTPUT_FORMAT"
+    whisper &quot;$1&quot; --model &quot;$MODEL&quot; --language &quot;$LANG&quot; --output_format &quot;$OUTPUT_FORMAT&quot;
     EOF
     
-    chmod +x "${whisper_scripts}/whisper-transcribe"
+    chmod +x &quot;${whisper_scripts}/whisper-transcribe&quot;
     
     # Download base model if not exists
-    python3 -c "import whisper; whisper.load_model('base')"
+    python3 -c &quot;import whisper; whisper.load_model('base')&quot;
     
     # Export the wrapper script
-    distrobox-export --bin "${whisper_scripts}/whisper-transcribe"
-    distrobox-export --bin "$(which whisper)"
+    distrobox-export --bin &quot;${whisper_scripts}/whisper-transcribe&quot;
+    distrobox-export --bin &quot;$(which whisper)&quot;
   packages:
     - which
     - ffmpeg
@@ -475,6 +512,4 @@ brew:
 
   # Packages to uninstall from upstream images
   uninstall:
-
-
-
+    all:
