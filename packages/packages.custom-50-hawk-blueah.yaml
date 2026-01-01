@@ -20,8 +20,8 @@ immutablue:
     43: 
     - name: ublue-os-staging.repo
       url: https://copr.fedorainfracloud.org/coprs/ublue-os/staging/repo/fedora-43/ublue-os-staging-fedora-43.repo
-    # - name: gnome-x11.repo 
-    #   url: https://copr.fedorainfracloud.org/coprs/frantisekz/GNOME-X11/repo/fedora-43/frantisekz-GNOME-X11-fedora-43.repo
+    - name: gnome-x11.repo 
+      url: https://copr.fedorainfracloud.org/coprs/frantisekz/GNOME-X11/repo/fedora-43/frantisekz-GNOME-X11-fedora-43.repo
 
   repo_urls_aarch64:
     all:
@@ -98,6 +98,11 @@ immutablue:
     - xdotool
     - xmobar
     - xmonad
+    - xorg-x11-xinit
+    - gnome-session
+    - gnome-classic-session
+    - gnome-session-xsession
+    # - gnome-classic-session-xsession
     - xorg-x11-server-Xephyr 
     - xorg-x11-xdm
     - xwininfo
@@ -479,6 +484,64 @@ distrobox:
     - strace
     - ltrace
     - bpftrace
+# Copyleft Games distrobox
+- name: copyleft-games
+  image: registry.fedoraproject.org/fedora:43
+  pkg_inst_cmd: dnf5 install -y
+  pkg_updt_cmd: dnf5 update -y
+  extra_commands:
+  packages:
+    # Development tools
+    - gcc
+    - make
+    - cmake
+    - automake
+    - autoconf
+    - libtool
+    - binutils
+    - git
+    # Languages/Runtimes
+    - nodejs
+    - nodejs-npm
+    - python3
+    - python3-devel
+    - python3-pip
+    - luajit
+    - luajit-devel
+    - lua-devel
+    # Graphics/GUI development
+    - cairo-devel
+    - gjs-devel
+    - gobject-introspection-devel
+    - mesa-libGL-devel
+    - libglvnd-devel
+    - libX11-devel
+    - libXcursor-devel
+    - libXext-devel
+    - libXfixes-devel
+    - libXi-devel
+    - libXinerama-devel
+    - libXrandr-devel
+    - libXrender-devel
+    - harfbuzz-devel
+    - freetype-devel
+    - fontconfig-devel
+    - pixman-devel
+    - libpng-devel
+    # Other libraries
+    - glib2-devel
+    - json-glib-devel
+    - libxml2-devel
+    - libyaml-devel
+    - libffi-devel
+    - liburing-devel
+    - lzo-devel
+  npm_packages:
+  pip_packages:
+  cargo_packages:
+  bin_export:
+  app_export:
+  bin_symlink:
 
 # Brew packages to install or uninstall. 
 # Brew only works on x86_64.
