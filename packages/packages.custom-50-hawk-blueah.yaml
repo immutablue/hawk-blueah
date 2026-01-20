@@ -42,7 +42,7 @@ immutablue:
     - cockpit-ostree
     - cockpit-podman 
     - gcc
-    - gcc-plugin-devel
+    # - gcc-plugin-devel  # version conflict with installed gcc
     - gdb
     - gnutls
     - gnutls-utils
@@ -60,6 +60,7 @@ immutablue:
     - tlp
     - wireguard-tools
     - s3fs-fuse
+    - wofi
 
   # these can be set for speicific builds too (see /usr/immutablue/build_options)
   rpm_silverblue:
@@ -101,7 +102,7 @@ immutablue:
     - xorg-x11-xinit
     - gnome-session
     - gnome-classic-session
-    - gnome-session-xsession
+    # - gnome-session-xsession  # conflicts with GNOME-X11 repo
     # - gnome-classic-session-xsession
     - xorg-x11-server-Xephyr 
     - xorg-x11-xdm
@@ -109,7 +110,7 @@ immutablue:
     - zathura
     - zathura-pdf-poppler
     42:
-    - gnome-session-xsession
+    # - gnome-session-xsession  # conflicts with GNOME-X11 repo
 
   # You can specify RPMs for specific archs only
   rpm_aarch64:
@@ -579,6 +580,16 @@ brew:
   - wiki
   - yazi
   - yt-dlp
+  - neomutt
+  - lynx
+  - isync
+  - msmtp
+  - notmuch
+  - urlscan
+  - abook
+  - w3m
+  - pass
+
 
 
   # Packages to uninstall from upstream images
