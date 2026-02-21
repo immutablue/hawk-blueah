@@ -192,6 +192,7 @@ immutablue:
     - org.gnome.World.PikaBackup
     - net.waterfox.waterfox
     - net.lutris.Lutris
+    - im.riot.Riot
 
 
   # Architecture specific
