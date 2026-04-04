@@ -238,6 +238,7 @@ immutablue:
   # enable
   services_enable_user:
     all:
+      - emacs.service
   # disable services
   services_disable_user:
     all:
