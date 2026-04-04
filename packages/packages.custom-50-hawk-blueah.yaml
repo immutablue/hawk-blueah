@@ -194,6 +194,7 @@ immutablue:
     - net.waterfox.waterfox
     - net.lutris.Lutris
     - im.riot.Riot
+    - it.mijorus.gearlever
 
 
   # Architecture specific
